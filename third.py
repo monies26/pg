@@ -1,31 +1,34 @@
+from math import isqrt
+
+
 def je_prvocislo(cislo):
-    """
-    Funkce overi, zda zadane cislo je nebo neni prvocislo a vrati True nebo False
+    if cislo < 2:
+        return False
 
-    Prvocislo je takove cislo vetsi nez 1, ktere neni delitelne zadnym jinym cislem jenom 1 a samo sebou.
+    for delitel in range(2, isqrt(cislo) + 1):
+        if cislo % delitel == 0:
+            return False
+    return True
 
-    Napoveda jak otestova prvocislo:
-    Cislo 36 vznikne nasobenim:
-    1 * 36
-    2 * 18
-    3 * 12
-    4 * 9
-    6 * 6
-    9 * 4
-    12 * 3
-    18 * 2
-    36 * 1
-    Jak vidite v druhe polovine se dvojice opakuji, tzn. v tomto pripade staci overit delitelnost pouze do 6 (vcetne)
-    """
-    return False
 
 def vrat_prvocisla(maximum):
-    """
-    Funkce spocita vsechna prvocisla v rozsahu 1 az maximum a vrati je jako seznam.
-    """
-    return [2,3,5]
+    return [
+        cislo
+        for cislo in range(2, maximum + 1)
+        if je_prvocislo(cislo)
+    ]
+
+
+def my_range_while(start, stop, step=1):
+    cislo = start
+    while cislo < stop:
+        yield cislo
+        cislo += step
+
 
 if __name__ == "__main__":
-    cislo = input("Zadej maximum: ")
-    prvocisla = vrat_prvocisla(cislo)
-    print(prvocisla)
+    for cislo in (1, 2, 3, 100, 101):
+        print(f"{cislo} -> {je_prvocislo(cislo)}")
+
+    for maximum in (1, 2, 3, 10):
+        print(f"{maximum} -> {vrat_prvocisla(maximum)}")
