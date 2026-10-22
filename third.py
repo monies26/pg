@@ -1,6 +1,9 @@
 from math import isqrt
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 49ea1e6f86162c54c8f9042f91e1b37231201340
 def je_prvocislo(cislo):
     if cislo < 2:
         return False

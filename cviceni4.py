@@ -30,3 +30,4 @@ if __name__ == "__main__":
     print(jaccardova_vzdalenost_mnozin(serp1, serp2))
     print(jaccardova_vzdalenost_mnozin(serp2, serp3))
     print(jaccardova_vzdalenost_mnozin(serp1, serp3))
+
